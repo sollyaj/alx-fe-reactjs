@@ -16,11 +16,7 @@ function App() {
       {/* Your components (main app layout) */}
       <Header />
       <WelcomeMessage /> 
-      <UserProfile 
-        name="Alice Johnson" 
-        age={25} 
-        bio="I love coding, hiking, and learning new technologies!" 
-      />
+      <UserProfile name="Alice" age="25" bio="Loves hiking and photography" />
       <MainContent />
       <Footer />
 
