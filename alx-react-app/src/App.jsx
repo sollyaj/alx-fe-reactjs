@@ -15,7 +15,7 @@ function App() {
     <>
       {/* Your components (main app layout) */}
       <Header />
-      <WelcomeMessage /> 
+      <WelcomeMessage />
       <UserProfile 
         name="Alice Johnson" 
         age={25} 
