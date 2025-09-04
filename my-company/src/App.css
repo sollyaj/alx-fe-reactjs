@@ -25,34 +25,6 @@ html, body, #root {
   box-sizing: border-box;
 }
 
-/* Navbar full width */
-.navbar {
-  background-color: #333;
-  padding: 15px 20px;
-  color: white;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%; /* 👈 add this */
-  box-sizing: border-box;
-}
-
-.navbar-logo {
-  font-size: 1.3rem;
-  font-weight: bold;
-}
-
-.navbar-links a {
-  margin-left: 20px;
-  color: white;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.navbar-links a:hover {
-  color: #ddd;
-}
-
 /* Footer full width */
 .footer {
   background-color: #222;
