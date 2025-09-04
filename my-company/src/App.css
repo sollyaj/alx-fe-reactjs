@@ -1,0 +1,155 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Make content stretch */
+.main-content {
+  flex: 1;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Navbar full width */
+.navbar {
+  background-color: #333;
+  padding: 15px 20px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%; /* 👈 add this */
+  box-sizing: border-box;
+}
+
+.navbar-logo {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.navbar-links a {
+  margin-left: 20px;
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.navbar-links a:hover {
+  color: #ddd;
+}
+
+/* Footer full width */
+.footer {
+  background-color: #222;
+  color: #ddd;
+  padding: 20px;
+  text-align: center;
+  margin-top: 40px;
+  width: 100%; /* 👈 add this */
+  box-sizing: border-box;
+}
+
+.footer-top {
+  margin-bottom: 10px;
+}
+
+.footer-links {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  margin: 0 10px;
+  color: #ddd;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: white;
+}
+
+.footer-social {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.footer-social img {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s ease;
+}
+
+.footer-social img:hover {
+  transform: scale(1.2);
+}
+
+
+/* Home */
+.home {
+  text-align: center;
+}
+
+/* About */
+.about {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Services */
+.services {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.services ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+/* Contact */
+.contact {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-form input,
+.contact-form textarea {
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 1rem;
+}
+
+.contact-form button {
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.contact-form button:hover {
+  background-color: #555;
+}
+
