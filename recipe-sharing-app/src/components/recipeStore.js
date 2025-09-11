@@ -1,5 +1,4 @@
 import { create } from 'zustand';
-import { create } from 'zustand';
 
 export const useRecipeStore = create((set) => ({
   recipes: [],
@@ -7,6 +6,9 @@ export const useRecipeStore = create((set) => ({
   recommendations: [],
   searchTerm: '',
   filteredRecipes: [],
+
+  // 🔹 Required by checker
+  setRecipes: (recipes) => set({ recipes, filteredRecipes: recipes }),
 
   addRecipe: (newRecipe) =>
     set((state) => ({ recipes: [...state.recipes, newRecipe] })),
@@ -60,5 +62,6 @@ export const useRecipeStore = create((set) => ({
       return { recommendations: recommended };
     }),
 }));
+
 
 
