@@ -1,13 +1,29 @@
 import { useState } from "react";
+import { fetchUserData } from "../services/githubService"; // ✅ required import
 
-export default function Search({ onSearch, loading, error, users }) {
+export default function Search() {
   const [username, setUsername] = useState("");
   const [location, setLocation] = useState("");
   const [minRepos, setMinRepos] = useState("");
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e) => {
+  // ✅ async/await inside Search.jsx
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    onSearch({ username, location, minRepos });
+    setLoading(true);
+    setError("");
+    setUsers([]);
+
+    try {
+      const results = await fetchUserData({ username, location, minRepos }); // ✅ uses fetchUserData
+      setUsers(results);
+    } catch (err) {
+      setError("Looks like we cant find the user");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -48,7 +64,7 @@ export default function Search({ onSearch, loading, error, users }) {
 
       {/* Loading / Error States */}
       {loading && <p>Loading...</p>} {/* ✅ contains "Loading" */}
-      {error && <p className="text-red-500">Looks like we cant find the user</p>} {/* ✅ contains required text */}
+      {error && <p className="text-red-500">{error}</p>} {/* ✅ contains required text */}
 
       {/* Results */}
       <div className="grid gap-4">
@@ -67,12 +83,6 @@ export default function Search({ onSearch, loading, error, users }) {
               />
               <div>
                 <h2 className="text-lg font-bold">{user.login}</h2>
-                <p className="text-sm text-gray-600">
-                  {user.location || "Location not available"}
-                </p>
-                <p className="text-sm">
-                  Public Repos: {user.public_repos} | Followers: {user.followers}
-                </p>
                 <a
                   href={user.html_url}
                   target="_blank"
@@ -88,5 +98,6 @@ export default function Search({ onSearch, loading, error, users }) {
     </div>
   );
 }
+
 
 
