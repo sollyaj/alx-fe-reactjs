@@ -11,20 +11,32 @@ export default function Search() {
 
   // ✅ async/await inside Search.jsx
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setError("");
-    setUsers([]);
+  e.preventDefault();
+  setLoading(true);
+  setError("");
+  setUsers([]);
 
-    try {
-      const results = await fetchUserData({ username, location, minRepos }); // ✅ uses fetchUserData
-      setUsers(results);
-    } catch (err) {
-      setError("Looks like we cant find the user");
-    } finally {
-      setLoading(false);
-    }
-  };
+  try {
+    // 1. Fetch basic search results
+    const results = await fetchUserData({ username, location, minRepos });
+
+    // 2. Fetch detailed info for each user
+    const detailedUsers = await Promise.all(
+      results.map(async (user) => {
+        const res = await axios.get(user.url);
+        return res.data;
+      })
+    );
+
+    // 3. Update state with detailed user data
+    setUsers(detailedUsers);
+  } catch (err) {
+    setError("Looks like we cant find the user");
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   return (
     <div>

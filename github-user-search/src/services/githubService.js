@@ -11,7 +11,7 @@ export async function fetchUserData({ username, location, minRepos }) {
   try {
     // ✅ Build the query string
     let query = "";
-    if (username) query += `${username} `;
+    if (username) query += `${username} in:login `;
     if (location) query += `location:${location} `;
     if (minRepos) query += `repos:>=${minRepos}`;
 
