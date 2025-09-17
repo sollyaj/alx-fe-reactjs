@@ -54,7 +54,8 @@ export default function App() {
   return (
     <div className="p-6 max-w-3xl mx-auto">
       <h1 className="text-2xl font-bold mb-4">GitHub User Search (Advanced)</h1>
-      <Search onSearch={handleSearch} />
+      <Search onSearch={handleSearch} loading={loading} error={error} users={users} />
+
 
       {loading && <p className="mt-4">Loading...</p>}
       {error && <p className="mt-4 text-red-500">{error}</p>}
