@@ -3,7 +3,7 @@
     "id": 1,
     "title": "Spaghetti Carbonara",
     "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
-    "image": "https://via.placeholder.com/600x400",
+    "image": "https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=600&q=80",
     "ingredients": [
       "200g spaghetti",
       "100g pancetta",
@@ -23,7 +23,7 @@
     "id": 2,
     "title": "Chicken Tikka Masala",
     "summary": "Chunks of grilled chicken cooked in a creamy tomato-based sauce.",
-    "image": "https://via.placeholder.com/600x400",
+    "image": "https://media.istockphoto.com/id/538929861/photo/chicken-tikka-masala.webp?a=1&b=1&s=612x612&w=0&k=20&c=hOsmOBc16xJrY5fnRXDUlws-s1lJk7CQzhyGGOmWsNE=",
     "ingredients": [
       "500g chicken breast",
       "200ml tomato puree",
@@ -37,6 +37,26 @@
       "Sauté onion, then add tomato puree and cream.",
       "Add grilled chicken to the sauce and simmer.",
       "Serve hot with rice or naan."
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Margherita Pizza",
+    "summary": "Classic Italian pizza topped with fresh mozzarella, tomatoes, and basil.",
+    "image": "https://media.istockphoto.com/id/2219129620/photo/authentic-italian-pizza-with-mozzarella-cheese-close-up-pizza-slice.webp?a=1&b=1&s=612x612&w=0&k=20&c=wUJRX3YZ1IlAx9mNO1uF2FoQVqG9NgeBT1dt7H8tWe4=",
+    "ingredients": [
+      "1 pizza dough base",
+      "200g fresh mozzarella",
+      "2 ripe tomatoes",
+      "Fresh basil leaves",
+      "Olive oil"
+    ],
+    "instructions": [
+      "Preheat oven to 220°C (425°F).",
+      "Spread tomato slices evenly over dough.",
+      "Add mozzarella and drizzle with olive oil.",
+      "Bake for 10-12 minutes until crust is golden.",
+      "Garnish with fresh basil before serving."
     ]
   }
 ]

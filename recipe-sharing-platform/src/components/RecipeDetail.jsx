@@ -20,7 +20,7 @@ const RecipeDetail = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-pink-50 p-6">
+    <div className="min-h-screen bg-gradient-to-br from-gray-800 via-gray-900 to-black p-6">
       <div className="max-w-3xl mx-auto bg-white rounded-2xl shadow-lg overflow-hidden">
         {/* Image */}
         <img
