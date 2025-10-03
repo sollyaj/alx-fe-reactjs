@@ -4,21 +4,40 @@ const AddRecipeForm = () => {
   const [title, setTitle] = useState("");
   const [ingredients, setIngredients] = useState("");
   const [steps, setSteps] = useState("");
-  const [error, setError] = useState("");
+  const [errors, setErrors] = useState({});
+
+  // Validation function
+  const validate = () => {
+    const newErrors = {};
+
+    if (!title.trim()) {
+      newErrors.title = "Recipe title is required";
+    }
+    if (!ingredients.trim()) {
+      newErrors.ingredients = "Ingredients are required";
+    } else if (ingredients.split(",").length < 2) {
+      newErrors.ingredients = "Please list at least two ingredients";
+    }
+    if (!steps.trim()) {
+      newErrors.steps = "Preparation steps are required";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!title || !ingredients || !steps) {
-      setError("All fields are required!");
-      return;
+    if (!validate()) {
+      return; // Stop if validation fails
     }
 
-    setError("");
     alert("Recipe submitted successfully!");
     setTitle("");
     setIngredients("");
     setSteps("");
+    setErrors({});
   };
 
   return (
@@ -30,8 +49,6 @@ const AddRecipeForm = () => {
         <h2 className="text-2xl font-bold mb-4 text-gray-800 text-center">
           Add a New Recipe
         </h2>
-
-        {error && <p className="text-red-500 mb-4">{error}</p>}
 
         {/* Title */}
         <div className="mb-4">
@@ -45,6 +62,7 @@ const AddRecipeForm = () => {
             className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
             placeholder="Enter recipe title"
           />
+          {errors.title && <p className="text-red-500 text-sm">{errors.title}</p>}
         </div>
 
         {/* Ingredients */}
@@ -59,6 +77,9 @@ const AddRecipeForm = () => {
             placeholder="List ingredients, separated by commas"
             rows="4"
           ></textarea>
+          {errors.ingredients && (
+            <p className="text-red-500 text-sm">{errors.ingredients}</p>
+          )}
         </div>
 
         {/* Steps */}
@@ -73,6 +94,7 @@ const AddRecipeForm = () => {
             placeholder="Write the preparation steps"
             rows="4"
           ></textarea>
+          {errors.steps && <p className="text-red-500 text-sm">{errors.steps}</p>}
         </div>
 
         {/* Submit */}
@@ -88,4 +110,5 @@ const AddRecipeForm = () => {
 };
 
 export default AddRecipeForm;
+
 
