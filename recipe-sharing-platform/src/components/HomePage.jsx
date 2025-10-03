@@ -1,22 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import data from "../data.json"; 
 
 const HomePage = () => {
   const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
-    fetch("/data.json")
-      .then((res) => res.json())
-      .then((data) => setRecipes(data))
-      .catch((err) => console.error("Error loading data:", err));
+    setRecipes(data); 
   }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-800 via-gray-900 to-black p-6">
       <h1 className="text-4xl font-extrabold text-center mb-10 text-white drop-shadow-lg">
-  🍽️ Recipe Sharing Platform
+        🍽️ Recipe Sharing Platform
       </h1>
-
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-6">
         {recipes.map((recipe) => (
@@ -45,9 +42,10 @@ const HomePage = () => {
           </div>
         ))}
       </div>
-    </div>  
+    </div>
   );
 };
 
 export default HomePage;
+
 
