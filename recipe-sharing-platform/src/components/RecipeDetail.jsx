@@ -1,18 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
+import data from "../data.json";
 
 const RecipeDetail = () => {
   const { id } = useParams();
   const [recipe, setRecipe] = useState(null);
 
-  useEffect(() => {
-    fetch("/data.json")
-      .then((res) => res.json())
-      .then((data) => {
-        const selectedRecipe = data.find((r) => r.id === parseInt(id));
-        setRecipe(selectedRecipe);
-      })
-      .catch((err) => console.error("Error loading recipe:", err));
+    useEffect(() => {
+    const selected = data.find((item) => item.id === parseInt(id));
+    setRecipe(selected);
   }, [id]);
 
   if (!recipe) {
