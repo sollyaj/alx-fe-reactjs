@@ -1,35 +1,36 @@
 import React, { useState } from "react";
 
 const RegistrationForm = () => {
-  const [formData, setFormData] = useState({
-    username: "",
-    email: "",
-    password: "",
-  });
-
-  const [error, setError] = useState("");
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!formData.username || !formData.email || !formData.password) {
-      setError("All fields are required!");
+    // ✅ explicit individual checks
+    if (!username) {
+      setErrors("Username is required");
+      return;
+    }
+    if (!email) {
+      setErrors("Email is required");
+      return;
+    }
+    if (!password) {
+      setErrors("Password is required");
       return;
     }
 
-    setError("");
+    setErrors("");
 
-    // Mock API call
+    // Mock API call (simulate registration)
     try {
       const response = await fetch("https://jsonplaceholder.typicode.com/users", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ username, email, password }),
       });
 
       const data = await response.json();
@@ -37,6 +38,7 @@ const RegistrationForm = () => {
       alert("Registration successful!");
     } catch (err) {
       console.error("Registration failed:", err);
+      setErrors("Something went wrong during registration");
     }
   };
 
@@ -49,26 +51,30 @@ const RegistrationForm = () => {
           name="username"
           placeholder="Username"
           value={username}
-          onChange={handleChange}
+          onChange={(e) => setUsername(e.target.value)}
           className="w-full p-2 border rounded"
         />
+
         <input
           type="email"
           name="email"
           placeholder="Email"
           value={email}
-          onChange={handleChange}
+          onChange={(e) => setEmail(e.target.value)}
           className="w-full p-2 border rounded"
         />
+
         <input
           type="password"
           name="password"
           placeholder="Password"
           value={password}
-          onChange={handleChange}
+          onChange={(e) => setPassword(e.target.value)}
           className="w-full p-2 border rounded"
         />
-        {error && <p className="text-red-500">{error}</p>}
+
+        {errors && <p className="text-red-500">{errors}</p>}
+
         <button
           type="submit"
           className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
@@ -81,3 +87,4 @@ const RegistrationForm = () => {
 };
 
 export default RegistrationForm;
+
