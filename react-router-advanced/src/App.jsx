@@ -1,41 +1,39 @@
 // src/App.jsx
-import React, { useState } from "react";
+import React from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import PostsComponent from "./components/PostsComponent";
 import Profile from "./components/Profile";
 import BlogPost from "./components/BlogPost";
-import ProtectedRoute from "./components/ProtectedRoute"; // ✅ import it
+import ProtectedRoute from "./components/ProtectedRoute";
+import { useAuth } from "./hooks/useAuth"; // ✅ use it here
 
 function App() {
-  // Mock login state for demonstration
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const { isAuthenticated, login, logout } = useAuth();
 
   return (
     <BrowserRouter>
       <div>
-        {/* Navigation */}
         <div className="p-4 flex justify-center space-x-4">
           <Link to="/" className="text-blue-600 hover:underline">Posts</Link>
           <Link to="/profile" className="text-blue-600 hover:underline">Profile</Link>
           <Link to="/blog/1" className="text-blue-600 hover:underline">Sample Blog</Link>
-          <button
-            onClick={() => setIsAuthenticated(!isAuthenticated)}
-            className="ml-4 bg-gray-200 px-3 py-1 rounded"
-          >
-            {isAuthenticated ? "Logout" : "Login"}
-          </button>
+
+          {/* Mock login/logout */}
+          {isAuthenticated ? (
+            <button onClick={logout} className="ml-4 bg-gray-200 px-3 py-1 rounded">Logout</button>
+          ) : (
+            <button onClick={login} className="ml-4 bg-gray-200 px-3 py-1 rounded">Login</button>
+          )}
         </div>
 
-        {/* Routes */}
         <Routes>
           <Route path="/" element={<PostsComponent />} />
           <Route path="/blog/:id" element={<BlogPost />} />
-
-          {/* ✅ Protected route example */}
+          {/* ✅ Protected route */}
           <Route
             path="/profile/*"
             element={
-              <ProtectedRoute isAuthenticated={isAuthenticated}>
+              <ProtectedRoute>
                 <Profile />
               </ProtectedRoute>
             }
@@ -47,6 +45,7 @@ function App() {
 }
 
 export default App;
+
 
 
 
