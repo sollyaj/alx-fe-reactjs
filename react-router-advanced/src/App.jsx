@@ -3,6 +3,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import PostsComponent from "./components/PostsComponent";
 import Profile from "./components/Profile";
+import BlogPost from "./components/BlogPost"; // ✅ Import added
 
 function App() {
   return (
@@ -14,10 +15,11 @@ function App() {
           <Link to="/profile" className="text-blue-600 hover:underline">Profile</Link>
         </div>
 
-        {/* ✅ Routing Setup */}
+        {/* ✅ Routing */}
         <Routes>
           <Route path="/" element={<PostsComponent />} />
           <Route path="/profile/*" element={<Profile />} />
+          <Route path="/blog/:id" element={<BlogPost />} /> {/* ✅ Added dynamic route */}
         </Routes>
       </div>
     </BrowserRouter>
@@ -25,6 +27,7 @@ function App() {
 }
 
 export default App;
+
 
 
 
